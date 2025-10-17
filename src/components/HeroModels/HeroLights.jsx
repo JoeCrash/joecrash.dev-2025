@@ -18,7 +18,7 @@ const HeroLights = () => (
             intensity={40}
             color="#4cc9f0"
         />
-        {/* purplish side fill */}
+        {/* greenish side fill */}
         <spotLight
             position={[-3, 5, 5]}
             angle={0.4}

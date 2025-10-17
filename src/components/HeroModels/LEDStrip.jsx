@@ -162,7 +162,8 @@ const LEDStrip = ({
         if (!(Array.isArray(pattern) && pattern.length) || !scrollSpeed) return;
         const t = clock.getElapsedTime();
         const plen = pattern.length;
-        const shift = (patternOffset + Math.floor(t * scrollSpeed)) % plen;
+        const rawShift = patternOffset + Math.floor(t * scrollSpeed);
+        const shift = ((rawShift % plen) + plen) % plen;
         if (shift !== lastShift.current) {
             applyWrap(shift);
             lastShift.current = shift;

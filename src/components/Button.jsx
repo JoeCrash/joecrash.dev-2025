@@ -1,6 +1,6 @@
-const Button = ({id, className, text}) => {
+const Button = ({id, className, text, onClick}) => {
     return (
-        <a id={id} className={`${className ?? ''} cta-wrapper`}>
+        <button id={id} onClick={onClick} className={`${className ?? ''} cta-wrapper`}>
             <div className="cta-button group">
                 <div className="bg-circle" />
                 <p className="text">{text}</p>
@@ -8,7 +8,7 @@ const Button = ({id, className, text}) => {
                     <img src="/images/arrow-down.svg" alt="arrow"/>
                 </div>
             </div>
-        </a>
+        </button>
     )
 }
 export default Button
