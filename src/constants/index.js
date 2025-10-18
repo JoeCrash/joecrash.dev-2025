@@ -22,13 +22,15 @@ const words = [
     { text: "Concepts",      imgPath: "/images/concepts.svg", color: "#fd5c79" },
     { text: "Spaghetti Code",   imgPath: "/images/spaghetti.svg",     color: "#1e7e04" },
     { text: "Legacy",         imgPath: "/images/concepts.svg", color: "#6d45ce" },
+    { text: "Intranets",      imgPath: "/images/ideas.svg",    color: "#3ed714" },
 ];
 
 const words2 = [
     { text: "Demos",              imgPath: "/images/ideas.svg",    color: "#62e0ff" },
     { text: "Completed Features",         imgPath: "/images/concepts.svg", color: "#fd5c79" },
     { text: "Clean Architecture",        imgPath: "/images/architecture.svg",     color: "#1e7e04" },
-    { text: "Updated",           imgPath: "/images/concepts.svg", color: "#6d45ce" },
+    { text: "Modern",  imgPath: "/images/architecture.svg",     color: "#62e0ff" },
+    { text: "Portals",           imgPath: "/images/ideas.svg",    color: "#3ed714" },
 ];
 
 const counterItems = [
