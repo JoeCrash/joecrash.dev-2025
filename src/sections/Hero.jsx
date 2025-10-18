@@ -25,7 +25,19 @@ const Hero = () => {
                                     </span>
                                 </span>
                             </h1>
-                            <h1>into Complete</h1>
+                            <h1>into
+                                <span className="slide">
+                                    <span className="wrapper">
+                                        {words2.map((word, index) => (
+                                            <span key={index} className="flex items-center md:gap-3 gap-1 pb-2">
+                                                <img src={word.imgPath} alt={word.text} className="xl:size-12 md:size-10 size-7 md:p-2 p-1 rounded-full bg-white-50" />
+                                                <span>{word.text}</span>
+                                            </span>
+                                        ))}
+                                    </span>
+                                </span>
+                            </h1>
+                            <h1>that Deliver Results</h1>
                             <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
                                 I am a full stack developer who enjoys figuring out the hard stuff.
                             </p>
