@@ -1,4 +1,4 @@
-import {useGLTF, useTexture} from '@react-three/drei';
+import {useGLTF} from '@react-three/drei';
 import * as THREE from "three";
 import {useMemo} from "react";
 
@@ -10,7 +10,7 @@ export function Room(props) {
         transmission: 0.9,  // real transparency
         thickness: 0.02,
         roughness: 0.1,
-        metalness: -0.042,
+        metalness: 0.0,
         transparent: true,  // still needed for renderer sorting
         opacity: 0.12,
         depthWrite: false,

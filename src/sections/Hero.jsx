@@ -1,4 +1,4 @@
-import { words } from '../constants/index.js'
+import { words, words2 } from '../constants/index.js'
 import Button from "../components/Button.jsx";
 import HeroExperience from "../components/HeroModels/HeroExperience.jsx";
 
@@ -25,8 +25,7 @@ const Hero = () => {
                                     </span>
                                 </span>
                             </h1>
-                            <h1>into Real Projects</h1>
-                            <h1>that Deliver Results</h1>
+                            <h1>into Complete</h1>
                             <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
                                 I am a full stack developer who enjoys figuring out the hard stuff.
                             </p>

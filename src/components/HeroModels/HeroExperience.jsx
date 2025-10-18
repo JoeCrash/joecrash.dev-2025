@@ -11,10 +11,10 @@ import FlickerMask from "./FlickerMask.jsx";
 const HeroExperience = () => {
     const isTablet = useMediaQuery({query:"(max-width: 1024px)"});
     const scannerPattern = ["red","blue","red","green","red","yellow","red","pink"]; // cycles on every end reversal
-    const wallPosition = [[0.4, 3.4, -2.8],[0, 0.04, 0]];
+    {/*const wallPosition = [[0.4, 3.4, -2.8],[0, 0.04, 0]];*/}
     const floatPosition = [[0.6, 0.5, 0.8],[0, 0.6, 0]];
     return (
-        <Canvas camera={{ position: [9, 5, 8], fov: 35 }}>
+        <Canvas camera={{ position: [9, 5, 8], fov: 40 }}>
             <HeroLights />
             {/* Video Plane Screen 1*/}
             <VideoPlane

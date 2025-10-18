@@ -18,14 +18,23 @@ const navLinks = [
 ];
 
 const words = [
-  { text: "Ideas", imgPath: "/images/ideas.svg" },
-  { text: "Concepts", imgPath: "/images/concepts.svg" },
-  { text: "Designs", imgPath: "/images/designs.svg" },
-  { text: "Code", imgPath: "/images/code.svg" },
+    { text: "Ideas",         imgPath: "/images/ideas.svg",    color: "#62e0ff" },
+    { text: "Concepts",      imgPath: "/images/concepts.svg", color: "#fd5c79" },
+    { text: "Spaghetti Code",   imgPath: "/images/spaghetti.svg",     color: "#1e7e04" },
+    { text: "Legacy",         imgPath: "/images/concepts.svg", color: "#6d45ce" },
+    { text: "Monoliths",     imgPath: "/images/monolith.svg",     color: "#62e0ff" },
+];
+
+const words2 = [
+    { text: "Demos",              imgPath: "/images/ideas.svg",    color: "#62e0ff" },
+    { text: "Completed Features",         imgPath: "/images/concepts.svg", color: "#fd5c79" },
+    { text: "Clean Architecture",        imgPath: "/images/architecture.svg",     color: "#1e7e04" },
+    { text: "Modern",           imgPath: "/images/concepts.svg", color: "#6d45ce" },
+    { text: "Scalable Systems",  imgPath: "/images/architecture.svg",     color: "#62e0ff" },
 ];
 
 const counterItems = [
-  { value: 15, suffix: "+", label: "Years of Experience" },
+  { value: 20, suffix: "+", label: "Years of Experience" },
   { value: 200, suffix: "+", label: "Satisfied Clients" },
   { value: 108, suffix: "+", label: "Completed Projects" },
   { value: 90, suffix: "%", label: "Client Retention Rate" },
@@ -261,6 +270,7 @@ const socialImgs = [
 
 export {
   words,
+  words2,
   abilities,
   logoIconsList,
   counterItems,
