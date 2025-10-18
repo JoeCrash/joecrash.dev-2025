@@ -85,7 +85,7 @@ section {
     }
 
     .hero-text {
-        @apply flex flex-col justify-center md:text-[60px] text-[30px] font-semibold relative z-10 pointer-events-none;
+        @apply flex flex-col justify-center md:text-[60px] text-[30px] font-semibold relative z-10;
         img {
             @apply size-8 md:size-10 object-contain;
         }
@@ -99,7 +99,7 @@ section {
     }
 
     .hero-3d-layout {
-        @apply xl:w-[80%] w-full h-full min-h-[50vh] absolute xl:top-30 top-24 xl:-right-10 right-0;
+        @apply xl:w-[70%] w-full h-full min-h-[50vh] absolute xl:top-20 top-24 xl:-right-10 right-0;
     }
 
     .navbar {
