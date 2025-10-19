@@ -60,7 +60,6 @@ const Hero = () => {
                             <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
                                 I am a full stack developer who enjoys figuring out the hard stuff.
                             </p>
-                            <Button className="md:w-80 md:h-16 w-60 h-12" id="button" text="See my work"/>
                         </div>
                         <Button className="md:w-80 md:h-16 w-60 h-12" id="counter" text="See my work"/>
                     </div>
