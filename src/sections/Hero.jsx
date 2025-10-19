@@ -2,8 +2,25 @@ import {words, words2} from '../constants/index.js'
 import Button from "../components/Button.jsx";
 import HeroExperience from "../components/HeroModels/HeroExperience.jsx";
 import AnimatedCounter from "../components/AnimatedCounter.jsx";
+import {useGSAP} from "@gsap/react";
+import gsap from "gsap";
 
 const Hero = () => {
+
+    useGSAP(() => {
+        gsap.fromTo(".hero-text h1",
+            {
+                opacity: 0,
+                y: 60
+            },
+            {
+                opacity: 1,
+                y: 0,
+                stagger: 0.35,
+                duration: 2.5,
+                ease: "power2.inOut"
+            });
+    })
     return (
         <section id="hero" className="relative overflow-hidden">
             <div className="absolute top-0 left-0 z-10">
@@ -43,6 +60,7 @@ const Hero = () => {
                             <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
                                 I am a full stack developer who enjoys figuring out the hard stuff.
                             </p>
+                            <Button className="md:w-80 md:h-16 w-60 h-12" id="button" text="See my work"/>
                         </div>
                         <Button className="md:w-80 md:h-16 w-60 h-12" id="counter" text="See my work"/>
                     </div>
