@@ -1,6 +1,7 @@
 import {words, words2} from '../constants/index.js'
 import Button from "../components/Button.jsx";
 import HeroExperience from "../components/HeroModels/HeroExperience.jsx";
+import AnimatedCounter from "../components/AnimatedCounter.jsx";
 import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
 
@@ -61,6 +62,7 @@ const Hero = () => {
                             </p>
                             <Button className="md:w-80 md:h-16 w-60 h-12" id="button" text="See my work"/>
                         </div>
+                        <Button className="md:w-80 md:h-16 w-60 h-12" id="counter" text="See my work"/>
                     </div>
                 </header>
                 {/* RIGHT 3D MODEL */}
@@ -69,8 +71,8 @@ const Hero = () => {
                         <HeroExperience/>
                     </div>
                 </figure>
-
             </div>
+            <AnimatedCounter/>
         </section>
     )
 }

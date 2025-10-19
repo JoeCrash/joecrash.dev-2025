@@ -14,7 +14,7 @@ const HeroExperience = () => {
     {/*const wallPosition = [[0.4, 3.4, -2.8],[0, 0.04, 0]];*/}
     const floatPosition = [[0.6, 0.5, 0.8],[0, 0.6, 0]];
     return (
-        <Canvas camera={{ position: [9, 5, 8], fov: 40 }}>
+        <Canvas camera={{ position: [9, 5, 8], fov: 45 }}>
             <HeroLights />
             {/* Video Plane Screen 1*/}
             <VideoPlane
