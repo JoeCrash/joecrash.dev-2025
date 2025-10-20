@@ -137,8 +137,23 @@ section {
                     .underline {
                         @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full;
                     }
+
                 }
             }
+        }
+
+        /* nav split hover effect */
+        .nav-label { will-change: transform; }
+        .nav-label { display:inline-flex; gap:0; }
+        .nav-label .letter {
+          display:inline-grid;          /* creates intrinsic width */
+          height:1em;
+          overflow:hidden;              /* masks the slide */
+          line-height:1em;
+        }
+        .nav-label .letter > span {
+          grid-area:1 / 1;              /* perfectly overlapped copies */
+          will-change:transform;
         }
 
         .contact-btn {
