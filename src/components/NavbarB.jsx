@@ -76,17 +76,21 @@ const NavbarB = () => {
 
         const prev = activeIdRef.current;
         if (prev && itemsRef.current[prev]?.activeTl) {
-            itemsRef.current[prev].activeTl.reverse();
-            // underline off
-            itemsRef.current[prev].underline.style.width = "0";
-            itemsRef.current[prev].anchor.setAttribute("aria-current", "false");
+            const prevItem = itemsRef.current[prev];
+            prevItem.activeTl.reverse();
+            prevItem.underline && (prevItem.underline.style.width = "0");
+            prevItem.anchor?.setAttribute("aria-current", "false");
         }
 
         ensureTimelines(id);
-        itemsRef.current[id]?.activeTl.play();
-        // underline on (width, not transform, to avoid Tailwind w-0 conflict)
-        itemsRef.current[id].underline.style.width = "100%";
-        itemsRef.current[id].anchor.setAttribute("aria-current", "page");
+        const item = itemsRef.current[id];
+        if (!item || !item.activeTl) {
+          activeIdRef.current = id; // still track, but nothing to animate
+          return;
+        }
+        item.activeTl.play();
+        item.underline && (item.underline.style.width = "100%");
+        item.anchor?.setAttribute("aria-current", "page");
         activeIdRef.current = id;
     };
 
@@ -174,7 +178,9 @@ const NavbarB = () => {
                                         onFocus={() => handleHover(id)}
                                         aria-current="false"
                                     >
-                                        {/* tutorial-style label */}
+                                        {/* accessible label */}
+                                        <span className="sr-only">{name}</span>
+                                        {/* nav B-style label */}
                                         <span className="nav-label" aria-hidden="true">
                                           {chars.map((ch, i) => (
                                               <span className="letter" key={`${id}-${i}`}>
