@@ -109,7 +109,7 @@ const HeroExperience = () => {
                 minPolarAngle={Math.PI / 5}
                 maxPolarAngle={Math.PI / 2}
             />
-            <Room/>
+            <Room />
         </Canvas>
     )
 }
