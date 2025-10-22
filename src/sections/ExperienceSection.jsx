@@ -1,5 +1,6 @@
 import TitleHeader from "../components/TitleHeader.jsx";
 import {expCards} from "../constants/index.js";
+import GlowCard from "../components/GlowCard.jsx";
 
 const ExperienceSection = () => {
     return (
@@ -10,7 +11,13 @@ const ExperienceSection = () => {
                     <div className="relative z-50 xl:space-y-32 space-y-10">
                         {expCards.map((card, index) => (
                             <div key={index} className="exp-card-wrapper">
-                                {card.title}
+                                <div className="xl:w-2/6">
+                                    <GlowCard card={card}>
+                                        <div>
+                                            <img src={card.imgPath} alt={card.title} />
+                                        </div>
+                                    </ GlowCard>
+                                </div>
                             </div>
                         ))}
                     </div>
