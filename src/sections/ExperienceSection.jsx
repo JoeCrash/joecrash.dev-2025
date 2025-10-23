@@ -1,22 +1,141 @@
 import TitleHeader from "../components/TitleHeader.jsx";
 import {expCards} from "../constants/index.js";
 import GlowCard from "../components/GlowCard.jsx";
+import gsap from "gsap";
+import {useGSAP} from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const ExperienceSection = () => {
+
+    useGSAP(() => {
+        {/*Flips the logos*/}
+        // one-time setup
+        gsap.set(".timeline-logo", { transformStyle: "preserve-3d" });
+
+        gsap.utils.toArray(".timeline-logo").forEach((logo) => {
+            ScrollTrigger.create({
+                trigger: logo,
+                start: "bottom 90%",   // when it appears
+                end: "top 15%",        // just before it leaves
+                onEnter: () => {
+                    gsap.killTweensOf(logo);
+                    gsap.fromTo(
+                        logo,
+                        { opacity: 0, rotationY: 0, transformPerspective: 800 },
+                        { opacity: 1, rotationY: 360, duration: 0.8, ease: "power2.out", overwrite: "auto", immediateRender: false }
+                    );
+                },
+                onLeave: () => {
+                    gsap.killTweensOf(logo);
+                    gsap.to(logo, {
+                        opacity: 0,
+                        rotationY: "-=360",           // opposite spin on exit
+                        duration: 0.5,
+                        ease: "power2.inOut",
+                        overwrite: "auto"
+                    });
+                },
+                onEnterBack: () => {
+                    gsap.killTweensOf(logo);
+                    gsap.fromTo(
+                        logo,
+                        { opacity: 0, rotationY: 360 }, // come from the far side, spin in
+                        { opacity: 1, rotationY: 0, duration: 0.8, ease: "power2.out", overwrite: "auto", immediateRender: false }
+                    );
+                },
+                onLeaveBack: () => {
+                    gsap.killTweensOf(logo);
+                    gsap.to(logo, {
+                        opacity: 0,
+                        rotationY: "+=360",           // opposite direction when leaving upward
+                        duration: 0.6,
+                        ease: "power2.in",
+                        overwrite: "auto"
+                    });
+                }
+            });
+        });
+
+        gsap.utils.toArray(".timeline-card").forEach((card, index) => {
+            {/*slide and fade in from left side */}
+            gsap.from(card, {
+                xPercent: -30,
+                opacity: 0,
+                transformOrigin: "left left",
+                duration: 1.5,
+                ease: "power2.inOut",
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 80%",
+                    toggleActions: "restart none none none", // replay on re-enter downward
+                    markers: false,
+                }
+            })
+
+            gsap.to(".timeline", {
+                transformOrigin: "bottom bottom",
+                ease: "power1.inOut",
+                scrollTrigger: {
+                    trigger: ".timeline",
+                    start: "top center",
+                    end: "70% center",
+                    onUpdate: (self) => {
+                        gsap.to(".timeline", {
+                            scaleY: 1 - self.progress,
+
+                        })
+                    }
+                }
+            })
+        })
+    }, []);
     return (
         <section id="experience" className="w-full md:mt-40 mt-20 section-padding xl:px-0">
             <div className="w-full h-full md:px-20 px-5">
                 <TitleHeader title="Professional Work Experience" sub="My Career Overview"/>
                 <div className="mt-32 relative">
                     <div className="relative z-50 xl:space-y-32 space-y-10">
-                        {expCards.map((card, index) => (
-                            <div key={index} className="exp-card-wrapper">
+                        {expCards.map((card) => (
+                            <div key={card.title} className="exp-card-wrapper">
                                 <div className="xl:w-2/6">
                                     <GlowCard card={card}>
                                         <div>
-                                            <img src={card.imgPath} alt={card.title} />
+                                            <img src={card.imgPath} alt="exp-img" />
                                         </div>
-                                    </ GlowCard>
+                                    </GlowCard>
+                                </div>
+                                <div className="xl:w-4/6">
+                                    <div className="flex items-start">
+                                        <div className="timeline-wrapper">
+                                            <div className="timeline" />
+                                            <div className="gradient-line w-1 h-full" />
+                                        </div>
+                                        <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative z-20">
+                                            <div className="timeline-logo">
+                                                <img src={card.logoPath} alt="logo" />
+                                            </div>
+                                            <div>
+                                                <h1 className="font-semibold text-3xl">{card.title}</h1>
+                                                <p className="my-5 text-white-50">
+                                                    🗓️&nbsp;{card.date}
+                                                </p>
+                                                <p className="text-[#839CB5] italic">
+                                                    Responsibilities
+                                                </p>
+                                                <ul className="list-disc ms-5 mt-5 flex flex-col gap-5 text-white-50">
+                                                    {card.responsibilities.map(
+                                                        (responsibility, index) => (
+                                                            <li key={index} className="text-lg">
+                                                                {responsibility}
+                                                            </li>
+                                                        )
+                                                    )}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         ))}
