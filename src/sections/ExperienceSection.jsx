@@ -3,16 +3,17 @@ import {expCards} from "../constants/index.js";
 import GlowCard from "../components/GlowCard.jsx";
 import gsap from "gsap";
 import {useGSAP} from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ExperienceSection = () => {
 
     useGSAP(() => {
-        {/*Flips the logos*/}
+        {/*Flips the logos*/
+        }
         // one-time setup
-        gsap.set(".timeline-logo", { transformStyle: "preserve-3d" });
+        gsap.set(".timeline-logo", {transformStyle: "preserve-3d"});
 
         gsap.utils.toArray(".timeline-logo").forEach((logo) => {
             ScrollTrigger.create({
@@ -23,8 +24,15 @@ const ExperienceSection = () => {
                     gsap.killTweensOf(logo);
                     gsap.fromTo(
                         logo,
-                        { opacity: 0, rotationY: 0, transformPerspective: 800 },
-                        { opacity: 1, rotationY: 360, duration: 0.8, ease: "power2.out", overwrite: "auto", immediateRender: false }
+                        {opacity: 0, rotationY: 0, transformPerspective: 800},
+                        {
+                            opacity: 1,
+                            rotationY: 360,
+                            duration: 0.8,
+                            ease: "power2.out",
+                            overwrite: "auto",
+                            immediateRender: false
+                        }
                     );
                 },
                 onLeave: () => {
@@ -41,8 +49,15 @@ const ExperienceSection = () => {
                     gsap.killTweensOf(logo);
                     gsap.fromTo(
                         logo,
-                        { opacity: 0, rotationY: 360 }, // come from the far side, spin in
-                        { opacity: 1, rotationY: 0, duration: 0.8, ease: "power2.out", overwrite: "auto", immediateRender: false }
+                        {opacity: 0, rotationY: 360}, // come from the far side, spin in
+                        {
+                            opacity: 1,
+                            rotationY: 0,
+                            duration: 0.8,
+                            ease: "power2.out",
+                            overwrite: "auto",
+                            immediateRender: false
+                        }
                     );
                 },
                 onLeaveBack: () => {
@@ -69,7 +84,7 @@ const ExperienceSection = () => {
                 scrollTrigger: {
                     trigger: card,
                     start: "top 80%",
-                    toggleActions: "restart none none none", // replay on re-enter downward
+                    toggleActions: "restart none restart none", // replay on re-enter downward
                     markers: false,
                 }
             })
@@ -102,19 +117,19 @@ const ExperienceSection = () => {
                                 <div className="xl:w-2/6">
                                     <GlowCard card={card}>
                                         <div>
-                                            <img src={card.imgPath} alt="exp-img" />
+                                            <img src={card.imgPath} alt="exp-img"/>
                                         </div>
                                     </GlowCard>
                                 </div>
                                 <div className="xl:w-4/6">
                                     <div className="flex items-start">
                                         <div className="timeline-wrapper">
-                                            <div className="timeline" />
-                                            <div className="gradient-line w-1 h-full" />
+                                            <div className="timeline"/>
+                                            <div className="gradient-line w-1 h-full"/>
                                         </div>
                                         <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative z-20">
                                             <div className="timeline-logo">
-                                                <img src={card.logoPath} alt="logo" />
+                                                <img src={card.logoPath} alt="logo"/>
                                             </div>
                                             <div>
                                                 <h1 className="font-semibold text-3xl">{card.title}</h1>
