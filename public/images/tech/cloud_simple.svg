@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title>Simple Cloud</title>
+  <desc>Single-color cloud with three top puffs and a flat bottom.</desc>
+  <style>
+    :root{ --c:#0f172a; }
+    .cloud{ fill: var(--c); }
+  </style>
+  <g id="cloud" class="cloud">
+    <!-- Flat bottom slab -->
+    <rect x="240" y="360" width="320" height="80" rx="24" />
+    <!-- Three top puffs -->
+    <circle cx="320" cy="320" r="70"/>
+    <circle cx="400" cy="270" r="100"/>
+    <circle cx="480" cy="320" r="70"/>
+  </g>
+</svg>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title>Minimal Laptop</title>
+  <desc>Three-color vector laptop for parallax use. Colors configurable via CSS variables.</desc>
+  <style>
+    :root{
+      --c1:#0f172a; /* body */
+      --c2:#334155; /* details */
+      --c3:#22d3ee; /* screen */
+    }
+    .body{ fill: var(--c1); }
+    .detail{ fill: var(--c2); }
+    .screen{ fill: var(--c3); }
+  </style>
+
+  <!-- Layer: back (lid + bezel) -->
+  <g id="layer-back" transform="translate(100,80)">
+    <!-- Lid -->
+    <rect x="0" y="0" rx="18" ry="18" width="600" height="360" class="body"/>
+    <!-- Bezel -->
+    <rect x="24" y="24" rx="12" ry="12" width="552" height="312" class="detail"/>
+    <!-- Camera -->
+    <circle cx="300" cy="40" r="4" class="body" />
+    <!-- Screen -->
+    <rect x="36" y="60" rx="8" ry="8" width="528" height="264" class="screen"/>
+  </g>
+
+  <!-- Layer: mid (hinge shadow) -->
+  <g id="layer-mid" transform="translate(100,80)">
+    <rect x="90" y="360" width="420" height="14" class="detail" opacity="0.35"/>
+  </g>
+
+  <!-- Layer: front (base, keyboard, trackpad) -->
+  <g id="layer-front" transform="translate(60,380)">
+    <!-- Base -->
+    <rect x="0" y="0" rx="14" ry="14" width="680" height="140" class="body"/>
+    <!-- Keyboard well -->
+    <rect x="56" y="18" rx="10" ry="10" width="520" height="70" class="detail"/>
+    <!-- Keys grid (same color with lower opacity to stay 3-color compliant) -->
+    <g opacity="0.35" class="body">
+      <!-- rows -->
+      <rect x="72" y="30" width="60" height="18" rx="4" />
+      <rect x="138" y="30" width="60" height="18" rx="4" />
+      <rect x="204" y="30" width="60" height="18" rx="4" />
+      <rect x="270" y="30" width="60" height="18" rx="4" />
+      <rect x="336" y="30" width="60" height="18" rx="4" />
+      <rect x="402" y="30" width="60" height="18" rx="4" />
+      <rect x="468" y="30" width="60" height="18" rx="4" />
+      <!-- row 2 -->
+      <rect x="72" y="54" width="72" height="18" rx="4" />
+      <rect x="150" y="54" width="60" height="18" rx="4" />
+      <rect x="216" y="54" width="60" height="18" rx="4" />
+      <rect x="282" y="54" width="60" height="18" rx="4" />
+      <rect x="348" y="54" width="60" height="18" rx="4" />
+      <rect x="414" y="54" width="60" height="18" rx="4" />
+      <rect x="480" y="54" width="48" height="18" rx="4" />
+    </g>
+    <!-- Trackpad -->
+    <rect x="292" y="96" width="96" height="24" rx="6" class="detail"/>
+    <!-- Notch -->
+    <rect x="320" y="-8" width="40" height="8" rx="4" class="detail"/>
+  </g>
+</svg>
