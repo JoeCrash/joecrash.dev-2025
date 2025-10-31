@@ -59,12 +59,10 @@ const Contact = () => {
                 emailjsConfig.publicKey
             );
             if (isMountedRef.current) {
+                // Reset form and stop loading
                 setForm({ name: "", email: "", message: "" });
                 setSubmitStatus('success');
             }
-            // Reset form and stop loading
-            setForm({ name: "", email: "", message: "" });
-            setSubmitStatus('success');
         } catch (error) {
             console.error("EmailJS Error:", error);
             if (isMountedRef.current) {
