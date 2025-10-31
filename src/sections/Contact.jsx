@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 import emailjs from "@emailjs/browser";
 
 import TitleHeader from "../components/TitleHeader";
@@ -6,12 +6,34 @@ import ContactExperience from "../components/models/contact/ContactExperience";
 
 const Contact = () => {
     const formRef = useRef(null);
+    const isMountedRef = useRef(true);
     const [loading, setLoading] = useState(false);
     const [form, setForm] = useState({
         name: "",
         email: "",
         message: "",
     });
+
+    // Validate EmailJS configuration
+    const emailjsConfig = {
+        serviceId: import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+        templateId: import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+        publicKey: import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY,
+    };
+
+    const isEmailjsConfigured = emailjsConfig.serviceId && emailjsConfig.templateId && emailjsConfig.publicKey;
+
+    if (!isEmailjsConfigured) {
+        console.error('EmailJS environment variables are not configured');
+    }
+
+    const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
+
+    useEffect(() => {
+        return () => {
+            isMountedRef.current = false;
+        };
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -20,22 +42,38 @@ const Contact = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true); // Show loading state
+
+        if (!isEmailjsConfigured) {
+            setSubmitStatus('error');
+            return;
+        }
+
+        setLoading(true);
+        setSubmitStatus(null);
 
         try {
             await emailjs.sendForm(
-                import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-                import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+                emailjsConfig.serviceId,
+                emailjsConfig.templateId,
                 formRef.current,
-                import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+                emailjsConfig.publicKey
             );
-
+            if (isMountedRef.current) {
+                setForm({ name: "", email: "", message: "" });
+                setSubmitStatus('success');
+            }
             // Reset form and stop loading
             setForm({ name: "", email: "", message: "" });
+            setSubmitStatus('success');
         } catch (error) {
-            console.error("EmailJS Error:", error); // Optional: show toast
+            console.error("EmailJS Error:", error);
+            if (isMountedRef.current) {
+                setSubmitStatus('error');
+            }
         } finally {
-            setLoading(false); // Always stop loading, even on error
+            if (isMountedRef.current) {
+                setLoading(false);
+            }
         }
     };
 
@@ -93,7 +131,7 @@ const Contact = () => {
                                     />
                                 </div>
 
-                                <button type="submit">
+                                <button type="submit" disabled={loading}>
                                     <div className="cta-button group">
                                         <div className="bg-circle" />
                                         <p className="text">
@@ -106,6 +144,16 @@ const Contact = () => {
                                 </button>
                             </form>
                         </div>
+                        {submitStatus === 'success' && (
+                            <div className="text-green-500 text-center mt-4" role="alert">
+                                ✓ Message sent successfully!
+                            </div>
+                        )}
+                        {submitStatus === 'error' && (
+                            <div className="text-red-500 text-center mt-4" role="alert">
+                                ✗ Failed to send message. Please try again.
+                            </div>
+                        )}
                     </div>
                     <div className="xl:col-span-7 min-h-96">
                         <div className="bg-[#cd7c2e] w-full h-full hover:cursor-grab rounded-3xl overflow-hidden">

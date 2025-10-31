@@ -221,6 +221,14 @@ section {
         @apply relative z-20 cursor-pointer;
     }
 
+    button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+    button:disabled:hover {
+        transform: none;
+    }
+
     .cta-button {
         @apply px-4 py-4 rounded-lg bg-black-200 flex justify-center items-center relative cursor-pointer overflow-hidden;
 
