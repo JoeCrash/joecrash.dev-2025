@@ -26,10 +26,10 @@ const GlowCard = ({card, children, index}) => {
         <div
             ref={(el)=>( selfRefer(el, cardRefs) ) } /* self Ref */
             onMouseMove={handleMouseMove(index)}
-            className="card card-border timeline-card rounded-xl p-10"
+            className="card card-border timeline-card rounded-xl p-10 my-5"
         >
             <div className="glow"/>
-            <div className={"flex items-center gap-1 mb-5"}>
+            <div className={"flex items-center gap-1 mb-5 break-inside-avoid-column"}>
                 {Array.from({length: 5}).map((_, i) => (
                     <img key={i} src="/images/star.png" alt="star" className="size-5" />
                 ))}
