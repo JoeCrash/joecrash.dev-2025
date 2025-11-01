@@ -30,6 +30,7 @@ const Contact = () => {
     const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
 
     useEffect(() => {
+        isMountedRef.current = true;
         return () => {
             isMountedRef.current = false;
         };
@@ -102,7 +103,6 @@ const Contact = () => {
                                         required
                                     />
                                 </div>
-
                                 <div>
                                     <label htmlFor="email">Your Email</label>
                                     <input
@@ -115,7 +115,6 @@ const Contact = () => {
                                         required
                                     />
                                 </div>
-
                                 <div>
                                     <label htmlFor="message">Your Message</label>
                                     <textarea
@@ -128,7 +127,6 @@ const Contact = () => {
                                         required
                                     />
                                 </div>
-
                                 <button type="submit" disabled={loading}>
                                     <div className="cta-button group">
                                         <div className="bg-circle" />
